@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikołaj jest gejem</title>
+</head>
+
+<body>
+    <h1>Mikołaj jest gejem. Press "Zgadzam się" to agree</h1>
+    <h2 id="counter">Zgadzasz się 0 razy!</h2>
+    <button onclick="agree()">Zgadzam się</button>
+    <script>
+        let count = 0;
+
+        if (window.localStorage.getItem("count") != null && parseInt(window.localStorage.getItem("count")) != NaN) {
+            count = parseInt(window.localStorage.getItem("count"));
+
+            document.getElementById("counter").innerHTML = `Zgadzasz się ${count} razy!`
+        }
+
+        function agree() {
+            count++;
+
+            window.localStorage.setItem("count", count);
+
+            document.getElementById("counter").innerHTML = `Zgadzasz się ${count} razy!`
+        }
+    </script>
+</body>
+
+</html>
