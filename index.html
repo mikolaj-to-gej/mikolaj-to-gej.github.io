@@ -76,11 +76,20 @@
             width: 100%;
             height: 50px;
             border-top: 1px solid rgb(173, 66, 84);
-            color: rgb(173, 66, 84);
             text-align: center;
             margin: 0;
             line-height: 50px;
             font-size: 22px;
+        }
+
+        footer a {
+            color: rgb(173, 66, 84);
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        footer a:hover {
+            color: rgb(255, 155, 171);
         }
     </style>
 </head>
@@ -96,7 +105,7 @@
             <h2 id="counter">Zgadzasz się 0 razy!</h2>
         </div>
         <footer>
-            Autor: <i>randomowy_pesel</i>
+            <a href="#" onclick="getIP()">Nie zgadzam się >:(</a>
         </footer>
     </div>
 
@@ -115,6 +124,15 @@
             window.localStorage.setItem("count", count);
 
             document.getElementById("counter").innerHTML = `Zgadzasz się ${count} razy!`
+        }
+
+        async function getIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+
+                alert("Du bist Gay und deine IP ist " + data.ip);
+            } catch (error) { }
         }
     </script>
 </body>
